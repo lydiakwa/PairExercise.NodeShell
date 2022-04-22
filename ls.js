@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-module.exports.ls = function () {
+module.exports.ls = function (done) {
   process.stdin.on("data", (data) => {
     const cmd = data.toString().trim();
     if (cmd === "ls") {
@@ -8,8 +8,7 @@ module.exports.ls = function () {
         if (err) {
           throw err;
         } else {
-          process.stdout.write(files.join("\n"));
-          process.stdout.write("\nprompt > ");
+          done(files.join("\n"));
         }
       });
     }

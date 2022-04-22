@@ -1,6 +1,6 @@
 const request = require("request");
 
-module.exports.curl = function () {
+module.exports.curl = function (done) {
   process.stdin.on("data", (data) => {
     const cmd = data.toString().trim().split(" ");
     if (cmd[0] === "curl") {
@@ -8,8 +8,7 @@ module.exports.curl = function () {
         if (err) {
           throw err;
         } else {
-          process.stdout.write(body);
-          process.stdout.write("\nprompt > ");
+          done(body);
         }
       });
     }

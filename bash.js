@@ -13,9 +13,14 @@ process.stdout.write("prompt > ");
 // const exportsObj = require('./ls')
 // exportsObj.ls();
 
-require("./pwd").pwd();
-require("./ls").ls();
+function done(output) {
+  process.stdout.write(output);
+  process.stdout.write("\nprompt > ");
+}
 
-require("./cat").cat();
+require("./pwd").pwd(done);
+require("./ls").ls(done);
 
-require("./curl").curl();
+require("./cat").cat(done);
+
+require("./curl").curl(done);
