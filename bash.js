@@ -17,3 +17,5 @@ require("./pwd").pwd();
 require("./ls").ls();
 
 require("./cat").cat();
+
+require("./curl").curl();
